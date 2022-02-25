@@ -19,26 +19,25 @@ class MyApp extends StatelessWidget {
     // );
     return new MaterialApp(
       title: 'Startup Name Generator',
-      theme: new ThemeData(colorScheme: ColorScheme(
-          primary: Colors.white,
-          onPrimary: Colors.white,
-          secondary:Colors.white,
-          onSecondary:Colors.white,
-          error:Colors.white,
-          onError:Colors.white,
-          background:Colors.white,
-          onBackground:Colors.white,
-          surface:Colors.white,
-          onSurface:Colors.white,
-          brightness: Brightness.light
-      )),
+      theme: new ThemeData(
+          colorScheme: ColorScheme(
+              primary: Colors.white,
+              onPrimary: Colors.white,
+              secondary: Colors.white,
+              onSecondary: Colors.white,
+              error: Colors.white,
+              onError: Colors.white,
+              background: Colors.white,
+              onBackground: Colors.white,
+              surface: Colors.white,
+              onSurface: Colors.white,
+              brightness: Brightness.light)),
       home: RandomWords(),
     );
   }
 }
 
 class RandomWords extends StatefulWidget {
-
   @override
   createState() => new RandomWordsState();
 }
@@ -59,11 +58,11 @@ class RandomWordsState extends State<RandomWords> {
           title: Center(
             child: new Text('Startup Name Generator'),
           ),
-          titleTextStyle: TextStyle(color: Colors.black, fontSize: 23, fontWeight: FontWeight.bold),
+          titleTextStyle: TextStyle(
+              color: Colors.black, fontSize: 23, fontWeight: FontWeight.bold),
           actions: <Widget>[
             new IconButton(icon: new Icon(Icons.list), onPressed: _pushSaved)
-          ]
-      ),
+          ]),
       body: _buildSuggestions(),
     );
   }
@@ -94,8 +93,7 @@ class RandomWordsState extends State<RandomWords> {
         setState(() {
           if (alreadySaved) {
             _saved.remove(pair);
-          }
-          else {
+          } else {
             _saved.add(pair);
           }
         });
@@ -104,26 +102,21 @@ class RandomWordsState extends State<RandomWords> {
   }
 
   void _pushSaved() {
-    Navigator.of(context).push(
-        new MaterialPageRoute(
-            builder: (context) {
-              final tiles = _saved.map(
-                    (pair) {
-                  return new ListTile(
-                    title: new Text(pair.asPascalCase, style: _biggerFont),
-                  );
-                },
-              );
-              final divided = ListTile.divideTiles(
-                  context: context, tiles: tiles).toList();
-              return new Scaffold(
-                  appBar: new AppBar(
-                    title: new Text('Saved Suggestions'),
-                  ),
-                  body: new ListView(children: divided)
-              );
-            })
-    );
+    Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
+      final tiles = _saved.map(
+        (pair) {
+          return new ListTile(
+            title: new Text(pair.asPascalCase, style: _biggerFont),
+          );
+        },
+      );
+      final divided =
+          ListTile.divideTiles(context: context, tiles: tiles).toList();
+      return new Scaffold(
+          appBar: new AppBar(
+            title: new Text('Saved Suggestions'),
+          ),
+          body: new ListView(children: divided));
+    }));
   }
-
 }

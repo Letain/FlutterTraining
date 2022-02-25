@@ -36,11 +36,14 @@ class MyScaffold extends StatelessWidget {
     return new Material(
       child: new Column(
         children: [
-          new MyAppBar(title: new Text(
-            'Example Title',
-            style: Theme.of(context).primaryTextTheme.titleMedium,
-          ),),
-          new Expanded(child: new Center(
+          new MyAppBar(
+            title: new Text(
+              'Example Title',
+              style: Theme.of(context).primaryTextTheme.titleMedium,
+            ),
+          ),
+          new Expanded(
+              child: new Center(
             child: new Text('Hello World!'),
           ))
         ],
@@ -48,5 +51,3 @@ class MyScaffold extends StatelessWidget {
     );
   }
 }
-
-

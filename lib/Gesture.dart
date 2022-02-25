@@ -7,20 +7,21 @@ class MyButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        showDialog(context: context, builder: (BuildContext context){
-          return AlertDialog(
-            title: const Text('Test'),
-            content: const Text('Body'),
-            actions: <Widget>[
-              TextButton(
-                child: const Text('OK'),
-                onPressed: (){
-                  Navigator.of(context).pop();
-                },
-              )
-            ]
-          );
-        });
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                  title: const Text('Test'),
+                  content: const Text('Body'),
+                  actions: <Widget>[
+                    TextButton(
+                      child: const Text('OK'),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    )
+                  ]);
+            });
         print('My Button was tapped');
       },
       child: Container(
@@ -32,7 +33,10 @@ class MyButton extends StatelessWidget {
           color: Colors.lightGreen[500],
         ),
         child: const Center(
-          child: Text('Engage', style: TextStyle(fontWeight: FontWeight.bold),),
+          child: Text(
+            'Engage',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
         ),
       ),
     );

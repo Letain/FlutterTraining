@@ -22,7 +22,7 @@ import 'StatefulWidgetExample.dart';
 // StatefulWidget
 //void main() => runApp(const MaterialApp(title: 'StatefulWidgetExample', home: Counter()));
 //void main() => runApp(const MaterialApp(title: 'StatefulWidgetExample', home: Counter1()));
-void main(){
+void main() {
   runApp(MaterialApp(
     title: 'Shopping APp',
     home: ShoppingList(
@@ -34,5 +34,3 @@ void main(){
     ),
   ));
 }
-
-

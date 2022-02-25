@@ -12,31 +12,31 @@ class _CounterState extends State<Counter> {
 
   void _increment() {
     setState(() {
-      _counter ++;
+      _counter++;
     });
   }
 
   void _decrement() {
     if (_counter > 0) {
       setState(() {
-        _counter --;
+        _counter--;
       });
-    }
-    else {
-      showDialog(context: context, builder: (BuildContext context) {
-        return AlertDialog(
-            title: const Text('Alert'),
-            content: const Text('The minimum number is 0.'),
-            actions: <Widget>[
-              TextButton(
-                child: const Text('OK'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              )
-            ]
-        );
-      });
+    } else {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+                title: const Text('Alert'),
+                content: const Text('The minimum number is 0.'),
+                actions: <Widget>[
+                  TextButton(
+                    child: const Text('OK'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  )
+                ]);
+          });
     }
   }
 
@@ -49,10 +49,11 @@ class _CounterState extends State<Counter> {
           onPressed: _increment,
         ),
         Expanded(
-            child: Center(child:
-            Text('Count: $_counter', style: const TextStyle(
-                fontSize: 25
-            ),))),
+            child: Center(
+                child: Text(
+          'Count: $_counter',
+          style: const TextStyle(fontSize: 25),
+        ))),
         ElevatedButton(
           child: const Text('Decrement'),
           onPressed: _decrement,
@@ -61,7 +62,6 @@ class _CounterState extends State<Counter> {
     );
   }
 }
-
 
 // make widgets divided into components
 class CounterDisplay extends StatelessWidget {
@@ -72,10 +72,10 @@ class CounterDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-        child: Text('Count: $count',
-          style: const TextStyle(fontSize: 25),
-        )
-    );
+        child: Text(
+      'Count: $count',
+      style: const TextStyle(fontSize: 25),
+    ));
   }
 }
 
@@ -122,8 +122,7 @@ class NumberAlertDialog extends StatelessWidget {
               Navigator.of(context).pop();
             },
           )
-        ]
-    );
+        ]);
   }
 }
 
@@ -146,13 +145,14 @@ class _CounterState1 extends State<Counter1> {
   void _decrement() {
     if (_counter > 0) {
       setState(() {
-        _counter --;
+        _counter--;
       });
-    }
-    else {
-      showDialog(context: context, builder: (BuildContext context) {
-        return const NumberAlertDialog();
-      });
+    } else {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return const NumberAlertDialog();
+          });
     }
   }
 
@@ -178,50 +178,56 @@ class Product {
 typedef void CartChangedCallback(Product product, bool inCart);
 
 class ShoppingListItem extends StatelessWidget {
-  ShoppingListItem({required Product product, required this.inCart, required this.onCartChanged})
-  : product = product, super(key: ObjectKey(product));
+  ShoppingListItem(
+      {required Product product,
+      required this.inCart,
+      required this.onCartChanged})
+      : product = product,
+        super(key: ObjectKey(product));
 
   final Product product;
   final bool inCart;
   final CartChangedCallback onCartChanged;
 
-  Color _getColor(BuildContext context){
+  Color _getColor(BuildContext context) {
     return inCart ? Colors.black54 : Theme.of(context).primaryColor;
   }
 
-  TextStyle? _getTextStyle(BuildContext context){
-    if(!inCart) return null;
+  TextStyle? _getTextStyle(BuildContext context) {
+    if (!inCart) return null;
 
-    return const TextStyle(color: Colors.black54, decoration: TextDecoration.lineThrough);
+    return const TextStyle(
+        color: Colors.black54, decoration: TextDecoration.lineThrough);
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: (){
+      onTap: () {
         onCartChanged(product, !inCart);
       },
       leading: CircleAvatar(
         child: Text(product.name[0]),
         backgroundColor: _getColor(context),
       ),
-      title: Text(product.name, style: _getTextStyle(context),),
+      title: Text(
+        product.name,
+        style: _getTextStyle(context),
+      ),
     );
   }
 }
 
 class ShoppingList extends StatefulWidget {
-  const ShoppingList({Key? key, required this.products}): super(key: key);
+  const ShoppingList({Key? key, required this.products}) : super(key: key);
 
   final List<Product> products;
 
   @override
   _ShoppingListState createState() => _ShoppingListState();
-
 }
 
 class _ShoppingListState extends State<ShoppingList> {
-
   final Set<Product> _shoppingCart = <Product>{};
 
   void _handleCartChanged(Product product, bool inCart) {
@@ -253,5 +259,3 @@ class _ShoppingListState extends State<ShoppingList> {
     );
   }
 }
-
-
