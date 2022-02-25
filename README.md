@@ -1,16 +1,58 @@
 # flutter_training
 
-A new Flutter project.
+A Flutter Learning Helper.
+Based on [Flutter](https://flutterchina.club/get-started/codelab/) Official.
 
-## Getting Started
+## Base Knowledge
 
-This project is a starting point for a Flutter application.
+#### Prepare Environment
+* [Windows](https://flutterchina.club/setup-windows/)
 
-A few resources to get you started if this is your first Flutter project:
+#### Start An Application
+```
+void main() => runApp(MaterialAPP(title: 'Title', home: AnyWidget());
+```
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+#### Widget
+* StatelessWidget
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```
+class MyWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context){
+    return AnyWidget();
+  }
+}
+```
+* StatefulWidget
+
+```
+class MyWidget extends StatefulWidget {
+  @override
+  _MyWidgetState createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget> {
+  @override
+  Widget build(BuildContext context){
+    return AnyWidget();
+  }
+}
+```
+
+#### Components
+* Text
+* Row
+* Column
+* Stack
+* Container
+* ...
+* AppBar
+* Scaffold
+* Center
+* Expanded
+* ...
+* Customed
+
+
+
